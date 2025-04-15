@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [tool.flet]
-# org name in reverse domain name notation, e.g. "com.mycompany".
+# org name in reverse dopantalla_pedir_archivo name notation, e.g. "com.mycompany".
 # Combined with project.name to build bundle ID for iOS and Android apps
 org = "com.mycompany"
 
