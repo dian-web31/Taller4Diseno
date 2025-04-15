@@ -1,7 +1,13 @@
+"""
+Módulo para manejar busqueda del CSV y el conteo de materias por estudiante.
+"""
 import os
 from collections import defaultdict
 
 class ControlCSV:
+    """
+    Clase ControlCSV para manejar la lectura y procesamiento de un archivo CSV.
+    """
     def __init__(self, ruta: str):
         self.ruta = ruta
 
@@ -38,11 +44,10 @@ class ControlCSV:
         for registro in datos:
             contador[registro['nombre']] += 1
         return dict(contador)
-
+    
     def generar_informe(self) -> dict:
         """
         Genera un diccionario con el conteo de materias por estudiante.
         (Alias de cuenta_materias() con nombre más descriptivo)
         """
-        print(self.cuenta_materias())
         return self.cuenta_materias()
