@@ -23,9 +23,3 @@ Run as a desktop app:
 ```
 uv run flet run
 ```
-
-Run as a web app:
-
-```
-uv run flet run --web
-``

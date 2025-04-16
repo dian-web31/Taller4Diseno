@@ -1,26 +1,26 @@
-"""
+""""
 Módulo para manejar busqueda del CSV y el conteo de materias por estudiante.
 """
 import os
 from collections import defaultdict
 
-class ControlCSV:
+class Archivo:
     """
     Clase ControlCSV para manejar la lectura y procesamiento de un archivo CSV.
     """
     def __init__(self, ruta: str):
-        self.ruta = ruta
+        self.__ruta = ruta
 
     def leer_csv(self) -> list:
         """
         Lee un archivo CSV con formato: cedula,nombre,codigo_materia,nombre_materia
         Retorna una lista de diccionarios con los datos estructurados.
         """
-        if not os.path.exists(self.ruta):
-            raise FileNotFoundError(f"El archivo {self.ruta} no existe.")
+        if not os.path.exists(self.__ruta):
+            raise FileNotFoundError(f"El __ruta {self.__ruta} no existe.")
 
         datos = []
-        with open(self.ruta, mode='r', encoding='utf-8') as csvfile:
+        with open(self.__ruta, mode='r', encoding='utf-8') as csvfile:
             # Leemos línea por línea (el formato no usa comas consistentes)
             for linea in csvfile:
                 # Limpiamos y dividimos la línea
@@ -44,7 +44,6 @@ class ControlCSV:
         for registro in datos:
             contador[registro['nombre']] += 1
         return dict(contador)
-    
     def generar_informe(self) -> dict:
         """
         Genera un diccionario con el conteo de materias por estudiante.

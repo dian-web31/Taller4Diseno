@@ -1,14 +1,14 @@
 """Modulo para manejar el frontend de la aplicacion"""
 import flet as ft
-from services.control_csv import ControlCSV
+from services.archivo import Archivo
 
 def pantalla_pedir_archivo(page: ft.Page):
     """
-    Nos permite manejar la pantalla de seleccion de archivos y mostrar el informe del archivo CSV.
+    Nos permite manejar la pantalla de seleccion de archivos y mostrar el informe del Archivos CSV.
     """
     archivo_seleccionado = None
 
-    def seleccionar_archivo(e): # Se conserva la variable e para evitar más de una seleccion de archivo
+    def seleccionar_archivo(e): # Se conserva la variable e para evitar más de una seleccion de Archivos
         nonlocal archivo_seleccionado
         # Abre el selector de archivos
         file_picker.pick_files(allow_multiple=False)
@@ -19,7 +19,7 @@ def pantalla_pedir_archivo(page: ft.Page):
             archivo_seleccionado = e.files[0]
             print(f"Archivo seleccionado: {archivo_seleccionado.name}")
             print(f"Ruta: {archivo_seleccionado.path}")
-            datos = ControlCSV(archivo_seleccionado.path)
+            datos = Archivo(archivo_seleccionado.path)
             datos = datos.generar_informe()
             for key, value in datos.items():
                 page.add(
@@ -36,7 +36,7 @@ def pantalla_pedir_archivo(page: ft.Page):
     # Añade un botón simple
     page.add(
         ft.ElevatedButton(
-            "Seleccionar archivo",
+            "Seleccionar Archivos",
             icon=ft.Icons.FOLDER_OPEN,
             on_click=seleccionar_archivo
         )
